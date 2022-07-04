@@ -1,0 +1,25 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "Project 1 of Shell nanodegree. It's a rest service to convert images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antsoriaandroid/image-processing-api.git"
+  },
+  "keywords": [
+    "js",
+    "api",
+    "jasmine",
+    "typescript"
+  ],
+  "author": "Antonio Soria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antsoriaandroid/image-processing-api/issues"
+  },
+  "homepage": "https://github.com/antsoriaandroid/image-processing-api#readme"
+}
