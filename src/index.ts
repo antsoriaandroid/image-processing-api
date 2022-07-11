@@ -9,9 +9,11 @@ app.use("/api", routes);
 
 app.get("/", (req, res) => {
   //    res.send('Hello, world!');
-  res.status(403).send("Forbidden URL");
+  res.status(403).send("Forbidden URL. Well, in a real world service it should not be accesible");
 });
 
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`);
 });
+
+export default app;

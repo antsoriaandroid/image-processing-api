@@ -7,12 +7,12 @@ images.get("/", (req, res) => {
   //-filename
   //-width
   //-height
-  let isValid:boolean  = imageUtilities.areParametersValid(req);
+  const isValid: boolean = imageUtilities.areParametersValid(req);
 
-  if(!isValid){
+  if (!isValid) {
     res.status(400).send("Wrong parameters value");
   } else {
-  res.send("Images route");
+    res.send("Images route");
   }
 });
 
