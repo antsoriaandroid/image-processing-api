@@ -2,7 +2,7 @@ import express from "express";
 import imageUtilities from "../../utils/imageUtilities";
 
 const images = express.Router();
-images.get("/", (req, res) => {
+images.get("/", (req: express.Request, res: express.Response) => {
   //parameters:
   //-filename
   //-width

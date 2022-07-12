@@ -7,7 +7,7 @@ const port = 3000;
 //api/images
 app.use("/api", routes);
 
-app.get("/", (req, res) => {
+app.get("/", (req: express.Request, res: express.Response) => {
   //    res.send('Hello, world!');
   res.status(403).send("Forbidden URL. Well, in a real world service it should not be accesible");
 });
