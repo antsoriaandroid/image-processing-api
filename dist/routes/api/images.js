@@ -16,7 +16,17 @@ images.get("/", function (req, res) {
         res.status(400).send("Wrong parameters value");
     }
     else {
-        res.send("Images route");
+        console.log("All the parameters are valid");
+        var filename = req.query.filename;
+        var height = req.query.height;
+        var width = req.query.width;
+        if (!imageUtilities_1.default.existsImage(filename)) {
+            res.status(400).send("Image doesn't exists");
+        }
+        else {
+            console.log("Image server");
+            res.send("Images route");
+        }
     }
 });
 exports.default = images;

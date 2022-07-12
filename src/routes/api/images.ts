@@ -12,7 +12,18 @@ images.get("/", (req: express.Request, res: express.Response): void => {
   if (!isValid) {
     res.status(400).send("Wrong parameters value");
   } else {
-    res.send("Images route");
+    console.log("All the parameters are valid");
+    let filename: string = req.query.filename as string;
+    let height = req.query.height;
+    let width = req.query.width;
+
+    if(!imageUtilities.existsImage(filename)){
+
+      res.status(400).send("Image doesn't exists");
+    } else {
+      console.log("Image server");
+      res.send("Images route");
+    }
   }
 });
 

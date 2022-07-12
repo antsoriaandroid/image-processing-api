@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var fs_1 = __importDefault(require("fs"));
 var imageUtilities = /** @class */ (function () {
     function imageUtilities() {
     }
@@ -33,6 +37,20 @@ var imageUtilities = /** @class */ (function () {
         }
         console.log("Is field a number? " + areValid);
         return areValid;
+    };
+    imageUtilities.existsImage = function (fileName) {
+        console.log("Image exists?");
+        var exists = false;
+        try {
+            if (fs_1.default.existsSync('./images/' + fileName + '.jpg')) {
+                exists = true;
+                console.log("Image exists");
+            }
+        }
+        catch (e) {
+            console.log("An error occurred.");
+        }
+        return exists;
     };
     return imageUtilities;
 }());

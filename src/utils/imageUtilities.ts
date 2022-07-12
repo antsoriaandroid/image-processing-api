@@ -1,5 +1,6 @@
-import sharp from "sharp";
+import sharp, {Sharp} from "sharp";
 import express from "express";
+import fs from 'fs';
 
 export default class imageUtilities {
   static areParametersValid(request: express.Request): boolean {
@@ -36,5 +37,20 @@ export default class imageUtilities {
     }
     console.log("Is field a number? " + areValid);
     return areValid;
+  }
+
+  static existsImage(fileName: string ): boolean {
+    console.log("Image exists?");
+    let exists= false;
+
+    try {
+    if(fs.existsSync('./images/'+fileName+'.jpg')){
+      exists = true;
+      console.log("Image exists");
+    }
+    } catch(e) {
+      console.log("An error occurred.")
+    }
+    return exists;
   }
 }
