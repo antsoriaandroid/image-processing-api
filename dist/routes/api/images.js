@@ -24,6 +24,8 @@ images.get("/", function (req, res) {
             res.status(400).send("Image doesn't exists");
         }
         else {
+            if (!imageUtilities_1.default.existsThumbnail(filename, width, height)) {
+            }
             console.log("Image server");
             res.send("Images route");
         }

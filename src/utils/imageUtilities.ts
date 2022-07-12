@@ -1,6 +1,7 @@
 import sharp, {Sharp} from "sharp";
 import express from "express";
-import fs from 'fs';
+import fs from "fs";
+import fsPromise from "fs/promises";
 
 export default class imageUtilities {
   static areParametersValid(request: express.Request): boolean {
@@ -52,5 +53,39 @@ export default class imageUtilities {
       console.log("An error occurred.")
     }
     return exists;
+  }
+
+  static existsThumbnail(fileName: string , width: number, height: number): boolean {
+    console.log("Thumbnail exists?");
+    let exists= false;
+
+    try {
+      if(fs.existsSync('./images/thumbnails/'+fileName+'-h'+height +'-w'+width +'.jpg')){
+        exists = true;
+        console.log("Thumbnail exists");
+      }
+    } catch(e) {
+      console.log("An error occurred.")
+    }
+    return exists;
+  }
+
+  static async resizeImage(fileName: string , width: number, height: number){
+      let resizedImage:Buffer ;
+      console.log("Width: "+width+" , Height: "+height);
+      if(!this.existsThumbnail(fileName, width, height)){
+        //let fileData = await fsPromise.open('./images/thumbnails/'+fileName+'-h'+height +'-w'+width +'.jpg', "w");
+
+        //3.6 Write image data to file
+        //await fileData.write(
+            await sharp('./images/'+fileName+'.jpg'
+            ).resize(
+                width, height
+            ).toFormat('jpeg').toFile('./images/thumbnails/'+fileName+'-h'+height +'-w'+width +'.jpg');
+       // )//;
+        //await fileData.close();
+
+      }
+
   }
 }
