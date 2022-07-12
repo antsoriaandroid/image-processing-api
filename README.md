@@ -56,6 +56,16 @@ Feel free to attempt to create this project based on the overview and rubric spe
 
 Although not a requirement, we recommend using Git from the very beginning if you choose to build on your local environment or use the provided workspace. Make sure to commit often and to use well-formatted commit messages.
 
+## How to access to the service
+The application is running in the URL: http://localhost:3000/api/images
+Parameters to pass are:
+filename
+height
+width
+
+Example of URL:
+http://localhost:3000/api/images?filename=fjord&height=120&width=100
+
 ## License
 
 [License](LICENSE.txt)
