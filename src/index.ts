@@ -7,7 +7,7 @@ const port = 3000;
 //api/images
 app.use("/api", routes);
 
-app.get("/", (req: express.Request, res: express.Response) => {
+app.get("/", (req: express.Request, res: express.Response): void => {
   //    res.send('Hello, world!');
   res
     .status(403)
@@ -16,7 +16,7 @@ app.get("/", (req: express.Request, res: express.Response) => {
     );
 });
 
-app.listen(port, () => {
+app.listen(port, (): void => {
   console.log(`server started at localhost:${port}`);
 });
 

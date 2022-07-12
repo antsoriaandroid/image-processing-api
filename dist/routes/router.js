@@ -8,7 +8,9 @@ var images_1 = __importDefault(require("./api/images"));
 var router = express_1.default.Router();
 router.get("/", function (req, res) {
     //res.send("Main API route");
-    res.status(403).send("Forbidden URL. Well it is really the Main API Route but it should not be accesible in a real world service");
+    res
+        .status(403)
+        .send("Forbidden URL. Well it is really the Main API Route but it should not be accesible in a real world service");
 });
 router.use("/images", images_1.default);
 exports.default = router;

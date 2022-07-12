@@ -11,7 +11,9 @@ var port = 3000;
 app.use("/api", router_1.default);
 app.get("/", function (req, res) {
     //    res.send('Hello, world!');
-    res.status(403).send("Forbidden URL. Well, in a real world service it should not be accesible");
+    res
+        .status(403)
+        .send("Forbidden URL. Well, in a real world service it should not be accesible");
 });
 app.listen(port, function () {
     console.log("server started at localhost:".concat(port));
