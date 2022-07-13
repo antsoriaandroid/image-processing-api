@@ -1,4 +1,4 @@
-import sharp, { Sharp } from "sharp";
+import sharp from "sharp";
 import express from "express";
 import fs from "fs";
 
@@ -84,13 +84,8 @@ export default class imageUtilities {
   }
 
   static async resizeImage(fileName: string, width: number, height: number) {
-    let resizedImage: Buffer;
     console.log("Width: " + width + " , Height: " + height);
     if (!this.existsThumbnail(fileName, width, height)) {
-      //let fileData = await fsPromise.open('./images/thumbnails/'+fileName+'-h'+height +'-w'+width +'.jpg', "w");
-
-      //3.6 Write image data to file
-      //await fileData.write(
       await sharp("./images/" + fileName + ".jpg")
         .resize(width, height)
         .toFormat("jpeg")
@@ -103,8 +98,6 @@ export default class imageUtilities {
             width +
             ".jpg"
         );
-      // )//;
-      //await fileData.close();
     }
   }
 }

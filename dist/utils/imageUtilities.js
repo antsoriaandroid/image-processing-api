@@ -41,7 +41,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var sharp_1 = __importDefault(require("sharp"));
 var fs_1 = __importDefault(require("fs"));
-var promises_1 = __importDefault(require("fs/promises"));
 var imageUtilities = /** @class */ (function () {
     function imageUtilities() {
     }
@@ -80,7 +79,7 @@ var imageUtilities = /** @class */ (function () {
         console.log("Image exists?");
         var exists = false;
         try {
-            if (fs_1.default.existsSync('./images/' + fileName + '.jpg')) {
+            if (fs_1.default.existsSync("./images/" + fileName + ".jpg")) {
                 exists = true;
                 console.log("Image exists");
             }
@@ -94,7 +93,13 @@ var imageUtilities = /** @class */ (function () {
         console.log("Thumbnail exists?");
         var exists = false;
         try {
-            if (fs_1.default.existsSync('./images/thumbnails/' + fileName + '-h' + height + '-w' + width + '.jpg')) {
+            if (fs_1.default.existsSync("./images/thumbnails/" +
+                fileName +
+                "-h" +
+                height +
+                "-w" +
+                width +
+                ".jpg")) {
                 exists = true;
                 console.log("Thumbnail exists");
             }
@@ -106,27 +111,25 @@ var imageUtilities = /** @class */ (function () {
     };
     imageUtilities.resizeImage = function (fileName, width, height) {
         return __awaiter(this, void 0, void 0, function () {
-            var resizedImage, fileData, _a, _b;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        if (!!this.existsThumbnail(fileName, width, height)) return [3 /*break*/, 5];
-                        return [4 /*yield*/, promises_1.default.open('./images/thumbnails/' + fileName + '-h' + height + '-w' + width + '.jpg', "w")];
+                        console.log("Width: " + width + " , Height: " + height);
+                        if (!!this.existsThumbnail(fileName, width, height)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0, sharp_1.default)("./images/" + fileName + ".jpg")
+                                .resize(width, height)
+                                .toFormat("jpeg")
+                                .toFile("./images/thumbnails/" +
+                                fileName +
+                                "-h" +
+                                height +
+                                "-w" +
+                                width +
+                                ".jpg")];
                     case 1:
-                        fileData = _c.sent();
-                        _b = (_a = fileData).write;
-                        return [4 /*yield*/, (0, sharp_1.default)('./images/' + fileName + '.jpg').resize(width, height).toBuffer()];
-                    case 2: 
-                    //3.6 Write image data to file
-                    return [4 /*yield*/, _b.apply(_a, [_c.sent()])];
-                    case 3:
-                        //3.6 Write image data to file
-                        _c.sent();
-                        return [4 /*yield*/, fileData.close()];
-                    case 4:
-                        _c.sent();
-                        _c.label = 5;
-                    case 5: return [2 /*return*/];
+                        _a.sent();
+                        _a.label = 2;
+                    case 2: return [2 /*return*/];
                 }
             });
         });
