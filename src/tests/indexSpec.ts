@@ -38,15 +38,12 @@ describe("Test endpoint invalid responses", () => {
   });
 });
 
-
 describe("Test endpoint image resize", () => {
   it("Test resize image", async () => {
-	  
-	  
-    const imageresized = await imageUtilities.resizeImage('fjord', 200, 200);
+    const imageresized = await imageUtilities.resizeImage("fjord", 200, 200);
 
-//"./images/thumbnails/fjord-h200-w200.jpg"
+    //"./images/thumbnails/fjord-h200-w200.jpg"
 
-    expect(imageUtilities.existsThumbnail('fjord', 200, 200)).toBe(true);
+    expect(imageUtilities.existsThumbnail("fjord", 200, 200)).toBe(true);
   });
 });

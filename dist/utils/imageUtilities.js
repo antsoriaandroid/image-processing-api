@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var sharp_1 = __importDefault(require("sharp"));
 var fs_1 = __importDefault(require("fs"));
+var path_1 = __importDefault(require("path"));
 var imageUtilities = /** @class */ (function () {
     function imageUtilities() {
     }
@@ -93,13 +94,18 @@ var imageUtilities = /** @class */ (function () {
         console.log("Thumbnail exists?");
         var exists = false;
         try {
-            if (fs_1.default.existsSync("./images/thumbnails/" +
+            if (!fs_1.default.existsSync("./images/thumbnails/")) {
+                console.log("Creating folder thumbails");
+                fs_1.default.mkdirSync("./images/thumbnails/");
+            }
+            var resolvedPath = path_1.default.resolve("./images/thumbnails/" +
                 fileName +
                 "-h" +
                 height +
                 "-w" +
                 width +
-                ".jpg")) {
+                ".jpg");
+            if (fs_1.default.existsSync(resolvedPath)) {
                 exists = true;
                 console.log("Thumbnail exists");
             }

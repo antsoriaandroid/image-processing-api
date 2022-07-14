@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../index"));
+var imageUtilities_1 = __importDefault(require("../utils/imageUtilities"));
 var request = (0, supertest_1.default)(index_1.default);
 describe("Test endpoint responses", function () {
     it("Valid call to get the api endpoint", function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -79,6 +80,21 @@ describe("Test endpoint invalid responses", function () {
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(400);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});
+describe("Test endpoint image resize", function () {
+    it("Test resize image", function () { return __awaiter(void 0, void 0, void 0, function () {
+        var imageresized;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, imageUtilities_1.default.resizeImage('fjord', 200, 200)];
+                case 1:
+                    imageresized = _a.sent();
+                    //"./images/thumbnails/fjord-h200-w200.jpg"
+                    expect(imageUtilities_1.default.existsThumbnail('fjord', 200, 200)).toBe(true);
                     return [2 /*return*/];
             }
         });

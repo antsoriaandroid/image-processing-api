@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import express from "express";
 import fs from "fs";
-import path from 'path';
+import path from "path";
 
 export default class imageUtilities {
   static areParametersValid(request: express.Request): boolean {
@@ -64,27 +64,21 @@ export default class imageUtilities {
     let exists = false;
 
     try {
-		
-		if(!fs.existsSync(
-          "./images/thumbnails/"
-        )){		
-			console.log ("Creating folder thumbails");
-			 fs.mkdirSync("./images/thumbnails/");
-		
-	}
-		
-	const resolvedPath =	path.resolve( "./images/thumbnails/" +
-            fileName +
-            "-h" +
-            height +
-            "-w" +
-            width +
-            ".jpg");
-      if (
-        fs.existsSync(
-          resolvedPath
-        )
-      ) {
+      if (!fs.existsSync("./images/thumbnails/")) {
+        console.log("Creating folder thumbails");
+        fs.mkdirSync("./images/thumbnails/");
+      }
+
+      const resolvedPath = path.resolve(
+        "./images/thumbnails/" +
+          fileName +
+          "-h" +
+          height +
+          "-w" +
+          width +
+          ".jpg"
+      );
+      if (fs.existsSync(resolvedPath)) {
         exists = true;
         console.log("Thumbnail exists");
       }
@@ -96,7 +90,7 @@ export default class imageUtilities {
 
   static async resizeImage(fileName: string, width: number, height: number) {
     console.log("Width: " + width + " , Height: " + height);
-	
+
     if (!this.existsThumbnail(fileName, width, height)) {
       await sharp("./images/" + fileName + ".jpg")
         .resize(width, height)
