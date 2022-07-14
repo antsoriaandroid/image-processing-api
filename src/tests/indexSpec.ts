@@ -1,5 +1,6 @@
 import supertest from "supertest";
 import app from "../index";
+import imageUtilities from "../utils/imageUtilities";
 
 const request = supertest(app);
 describe("Test endpoint responses", () => {
@@ -34,5 +35,18 @@ describe("Test endpoint invalid responses", () => {
     const response = await request.get("/api/images?width=150&height=150");
 
     expect(response.status).toBe(400);
+  });
+});
+
+
+describe("Test endpoint image resize", () => {
+  it("Test resize image", async () => {
+	  
+	  
+    const imageresized = await imageUtilities.resizeImage('fjord', 200, 200);
+
+//"./images/thumbnails/fjord-h200-w200.jpg"
+
+    expect(imageUtilities.existsThumbnail('fjord', 200, 200)).toBe(true);
   });
 });

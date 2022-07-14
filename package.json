@@ -29,10 +29,7 @@
   "homepage": "https://github.com/antsoriaandroid/image-processing-api#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "jasmine": "^4.2.1",
-    "jasmine-spec-reporter": "^7.0.0",
     "sharp": "^0.30.7",
-    "supertest": "^6.2.4",
     "typescript": "^4.7.4"
   },
   "devDependencies": {
@@ -45,6 +42,9 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.19",
+    "jasmine": "^4.2.1",
+    "jasmine-spec-reporter": "^7.0.0",
+    "supertest": "^6.2.4",
     "prettier": "^2.7.1",
     "ts-node": "^10.8.2"
   }
